@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 @Service
 public class AccountServiceDbImpl implements AccountService{
 
@@ -24,5 +26,10 @@ public class AccountServiceDbImpl implements AccountService{
     }
     account.setPassword(passwordEncoder.encode(account.getPassword()));
     return accountRepository.save(account);
+  }
+
+  @Override
+  public List<Account> getAll() {
+    return accountRepository.findAll();
   }
 }
