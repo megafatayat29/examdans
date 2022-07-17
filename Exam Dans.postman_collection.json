@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "8e731e87-0d44-444e-a2e0-014fc1fe9f19",
+		"name": "Exam Dans",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18864426"
+	},
+	"item": [
+		{
+			"name": "AccountAPI",
+			"item": [
+				{
+					"name": "Register An Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Boyce Avenue\",\r\n    \"email\": \"boyce@avenue.com\",\r\n    \"username\": \"boyce\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"boyce\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/signIn",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Jobs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiYm95Y2UiLCJ1c2VybmFtZSI6ImJveWNlIiwic3ViIjoiYm95Y2UiLCJpYXQiOjE2NTgwNDYzNTgsImV4cCI6MTY1ODA0OTM1OH0.3am__2opgRNP0Q5HZZgDBRnfC5871kRLzaBQ5MmFjYpQpg8r7CK0TxZpD-opBXTZyU__R5B0J-sbs2tZtLjW1g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/jobs",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiYm95Y2UiLCJ1c2VybmFtZSI6ImJveWNlIiwic3ViIjoiYm95Y2UiLCJpYXQiOjE2NTgwNDYzNTgsImV4cCI6MTY1ODA0OTM1OH0.3am__2opgRNP0Q5HZZgDBRnfC5871kRLzaBQ5MmFjYpQpg8r7CK0TxZpD-opBXTZyU__R5B0J-sbs2tZtLjW1g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/job/32bf67e5-4971-47ce-985c-44b6b3860cdb",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"job",
+								"32bf67e5-4971-47ce-985c-44b6b3860cdb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
