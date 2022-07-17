@@ -10,6 +10,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface JobService {
-  public JSONArray getAll() throws IOException, JSONException;
-  public ResponseEntity<String> getJobString(String id) throws IOException;
+  public ResponseEntity<Job[]> getAllJob() throws IOException;
+  public ResponseEntity<Job> getJob(String id) throws IOException;
 }

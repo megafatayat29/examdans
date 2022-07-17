@@ -2,6 +2,7 @@ package com.examdans.controllers;
 
 import com.examdans.dto.UserCredentials;
 import com.examdans.entities.Account;
+import com.examdans.entities.Job;
 import com.examdans.services.AccountService;
 import com.examdans.services.AuthenticationTokenService;
 import com.examdans.services.JobService;
@@ -38,13 +39,13 @@ public class AccountController {
   }
 
   @GetMapping("/jobs")
-  public JSONArray getAll() throws IOException, JSONException {
-    return jobService.getAll();
+  public ResponseEntity<Job[]> getAll() throws IOException {
+    return jobService.getAllJob();
   }
 
   @GetMapping("/job/{id}")
-  public ResponseEntity<String> findJobStringById(@PathVariable("id") String id) throws IOException {
-    return jobService.getJobString(id);
+  public ResponseEntity<Job> findJobById(@PathVariable("id") String id) throws IOException {
+    return jobService.getJob(id);
   }
 
 }

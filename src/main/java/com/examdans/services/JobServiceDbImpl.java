@@ -18,35 +18,16 @@ import java.util.List;
 @Service
 public class JobServiceDbImpl implements JobService {
 
-  OkHttpClient client = new OkHttpClient();
-
-  @Override
-  public JSONArray getAll() throws IOException, JSONException {
-    String URL = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json";
-    Request request = new Request.Builder()
-        .url(URL)
-        .build();
-    Response response = null;
-    try {
-      response = client.newCall(request).execute();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    String jsonData = response.body().string();
-    JSONArray Jarray = new JSONArray(jsonData);
-
-    for (int i = 0; i < Jarray.length(); i++) {
-      JSONObject object     = Jarray.getJSONObject(i);
-    }
-
-    return Jarray;
-  }
-
   @Autowired
   private RestTemplate restTemplate;
 
-  public ResponseEntity<String> getJobString(String id) {
-    ResponseEntity<String> response = restTemplate.getForEntity("http://dev3.dansmultipro.co.id/api/recruitment/positions/"+id, String.class);
+  public ResponseEntity<Job> getJob(String id) {
+      Job job = restTemplate.getForObject("http://dev3.dansmultipro.co.id/api/recruitment/positions/"+id, Job.class);
+    return ResponseEntity.ok(job);
+  }
+
+  public ResponseEntity<Job[]> getAllJob() {
+      ResponseEntity<Job[]> response = restTemplate.getForEntity("http://dev3.dansmultipro.co.id/api/recruitment/positions.json", Job[].class);
     return response;
   }
 }
