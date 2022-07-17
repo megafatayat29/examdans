@@ -1,4 +1,4 @@
-Nostra Movie
+Exam Dans
 ---------------------
 
 * Introduction
@@ -10,9 +10,7 @@ Nostra Movie
 INTRODUCTION
 ------------
 
-Nostra Movie is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.
-
-A producer can register himself in this application, and he can register the movies he produces.
+Exam Dans is a backend data protection application developed using Java Spring Boot, using JWT Authentication.
 
 ## Prerequisites
 
@@ -37,140 +35,55 @@ java -jar target/nostramovie-0.0.1-SNAPSHOT.jar
 
 ## API
 
-####Producer
-1. GET
-* Get All Producers 
-
-``GET: http://localhost:8081/producers``
-
-  => This API returns all producers. 
-
-* Get Producer By Id
-
-``GET: http://localhost:8081/producer/{id}``
-
-=> This API returns Producer entity with given id.
-
-2. POST
-* Register Producer
-
-``POST: http://localhost:8081/producer``
-
-  => This API returns the Producer entity that was created. Need RequestBody of Producer without id.
-
-####
-Request body:
-
-```json
-{
-  "founder": "Dhamoo Punjabi, Manoj Punjabi",
-  "name": "MD Pictures",
-  "yearFounded": "2006-12-07"
-}
-```
-
-3. PUT
-* Update Producer
-
-  ``PUT: http://localhost:8081/producer``
-
-  => This API returns the Producer entity that was updated. Need RequestBody of Producer with id.
-
-####
-Request body:
-
-```json
-{
-  "id": "4028e4e77de5de19017de5df48bd0000",
-  "founder": "Dhamoo Punjabi, Manoj Punjabi, EDITED",
-  "name": "MD Pictures",
-  "yearFounded": "2006-12-07"
-}
-```
-
-4. DELETE
-* Delete Producer By Id
-
-  ``DELETE: http://localhost:8081/producer?id=value``
-
-  => This API returns void, and need RequestParam String id of Producer you want to delete.
-
-####Movie
+####Account
 1. POST
-* Create Movie 
+* Register An Account
 
-``POST: http://localhost:8081/movie``
-
-  => This API returns the Movie entity that was created. Need RequestBody of Movie without id.
+``POST: http://localhost:8082/register``
 
 ####
 Request body:
 
 ```json
 {
-  "actor": "Reza Rahadian, Putri Marino, Anya Geraldine",
-  "description": "Reza Rahadian Reza Rahadian Reza Rahadian Reza Rahadian Reza Rahadian",
-  "director": "Manoj Punjabi",
-  "duration": 120,
-  "genre": "Drama",
-  "name": "Layangan Putus",
-  "producerId": "4028e4e77de5de19017de5df48bd0000"
+    "name": "Boyce Avenue",
+    "email": "boyce@avenue.com",
+    "username": "boyce",
+    "password": "12345678"
 }
 ```
 
-2. GET
-* Get All Movies
+  => This API for register an account for access the content. 
 
-``GET: http://localhost:8081/movies``
+* Sign In an Account
 
-=> This API returns all movies.
-
-* Get Producer By Id
-
-``GET: http://localhost:8081/movie/{id}``
-
-=> This API returns Movie entity with given id.
-
-* Get Movie By Criteria
-
-``GET: http://localhost:8081/movies/criteria?size=3&page=0``
-
-=> This API returns all Movie entity with given criteria. You can optionally add the RequestParam dynamic search attribute. This endpoint is equipped with a pagination feature, so it requires a page and the size of the RequestParam.
-
-Example:
-For example, you are looking for a movie with a director containing the word Manoj:
-
-``GET: http://localhost:8081/movies/criteria?director=Manoj&size=3&page=0``
-
-3. PUT
-* Update Movie
-
-  ``PUT: http://localhost:8081/movie``
-
-  => This API returns the Movie entity that was updated. Need RequestBody of Movie with id.
+``POST: http://localhost:8082/signIn``
 
 ####
 Request body:
 
 ```json
 {
-  "id": "402876507de5f22f017de5f3a1930000",
-  "actor": "Reza Rahadian, Putri Marino, Anya Geraldine",
-  "description": "Reza Rahadian Reza Rahadian Reza Rahadian Reza Rahadian Reza Rahadian",
-  "director": "Manoj Punjabi",
-  "duration": 120,
-  "genre": "Drama",
-  "name": "Layangan Putus",
-  "producerId": "4028e4e77de5de19017de5df48bd0000"
+    "username": "boyce",
+    "password": "12345678"
 }
 ```
 
-4. DELETE
-* Delete Movie By Id
+  => This API for sign in an account for access the content. 
 
-  ``DELETE: http://localhost:8081/movie?id=value``
+####Job
+1. GET
+* Get All Job
 
-  => This API returns void, and need RequestParam String id of Movie you want to delete.
+``GET: http://localhost:8082/jobs``
+
+  => This API returns all the jobs in API http://dev3.dansmultipro.co.id/api/recruitment/positions.json, with authentication JWT security.
+
+* Get Job By Id
+
+``GET: http://localhost:8082/job/{id}``
+
+=> This API returns a job entity with selected id.
 
 ## Support
 
